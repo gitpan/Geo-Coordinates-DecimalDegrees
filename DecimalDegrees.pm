@@ -1,3 +1,5 @@
+# $Id: DecimalDegrees.pm,v 1.5 2003/06/18 19:54:11 waltman Exp $
+
 package Geo::Coordinates::DecimalDegrees;
 
 require Exporter;
@@ -5,9 +7,9 @@ require Carp;
 
 @ISA = qw(Exporter);
 
-@EXPORT = qw( decimal2dms dms2decimal );
+@EXPORT = qw( decimal2dms decimal2dm dms2decimal dm2decimal );
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 use strict;
 use warnings;
@@ -25,6 +27,15 @@ sub decimal2dms {
     return ($degrees, $minutes, $seconds);
 }
 
+sub decimal2dm {
+    my ($decimal) = @_;
+
+    my $degrees = int($decimal);
+    my $minutes = abs($decimal - $degrees) * 60;
+
+    return ($degrees, $minutes);
+}
+
 sub dms2decimal {
     my ($degrees, $minutes, $seconds) = @_;
     my $decimal;
@@ -38,12 +49,17 @@ sub dms2decimal {
     return $decimal;
 }
 
+sub dm2decimal {
+    my ($degrees, $minutes) = @_;
+
+    return dms2decimal($degrees, $minutes, 0);
+}
+
 1;
 
 =head1 NAME
 
-Geo::Coordinates::DecimalDegrees - convert between
-degrees/minutes/seconds and decimal degrees
+Geo::Coordinates::DecimalDegrees - convert between degrees/minutes/seconds and decimal degrees
 
 =head1 SYNOPSIS
 
@@ -66,7 +82,7 @@ formats.
 =head1 FUNCTIONS
 
 This module provides the following functions, which are all exported
-by default when you call C<use Geo::Coordinates::DecimalDegrees;>.
+by default when you call C<use Geo::Coordinates::DecimalDegrees;>:
 
 =over 4
 
@@ -81,12 +97,32 @@ list.  Typically used as follows:
 If $decimal_degrees is negative, only $degrees will be negative.
 $minutes and $seconds will always be positive.
 
+=item decimal2dm($decimal_degrees)
+
+Converts a floating point number of degrees to the equivalent number
+of degrees and minutes which are returned as a 2-element list.
+Typically used as follows:
+
+  ($degrees, $minutes) = decimal2dm($decimal_degrees);
+
+If $decimal_degrees is negative, only $degrees will be negative.
+$minutes will always be positive.
+
 =item dms2decimal($degrees, $minutes, $seconds)
 
 Converts degrees, minutes, and seconds to the equivalent number of
 decimal degrees:
 
   $decimal_degrees = dms2decimal($degrees, $minutes, $seconds);
+
+If $degrees is negative, then $decimal_degrees will also be negative.
+
+=item dm2decimal($degrees, $minutes)
+
+Converts degrees and minutes to the equivalent number of
+decimal degrees:
+
+  $decimal_degrees = dm2decimal($degrees, $minutes);
 
 If $degrees is negative, then $decimal_degrees will also be negative.
 
@@ -108,5 +144,9 @@ Copyright 2003 by Walt Mankowski
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
+
+=head1 THANKS
+
+Thanks to Andy Lester for telling me about pod.t
 
 =cut
