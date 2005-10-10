@@ -1,4 +1,4 @@
-# $Id: 1.t,v 1.4 2003/06/21 14:29:50 waltman Exp $
+# $Id: 1.t 20 2003-06-21 14:29:50Z waltman $
 
 use strict;
 use Test::More tests => 52;
