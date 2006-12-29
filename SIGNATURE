@@ -1,0 +1,32 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.55.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 9803399a95bb10c465d56adfadebad90cfd23429 Changes
+SHA1 79005e890592277046a71eccd02458df658d8696 DecimalDegrees.pm
+SHA1 415e185cf2aff00f855763aae84945501fd7c0d5 INSTALL
+SHA1 d4c73402239f3db4d8895fced292e09fa58d2c65 MANIFEST
+SHA1 89996de4792c8e2af076b6aa185a423ecdafdb76 META.yml
+SHA1 658ad52c1c06f1fe18a125c6cc91fe3ed141aa8c Makefile.PL
+SHA1 e26bc679c32c065b2fe997333dba29c53905d46b README
+SHA1 5df308fb5cefeb143e246444e184d081fd7c7d7f t/1.t
+SHA1 6136e4650b02ad9e37459efa80da25361927d7bf t/pod.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFFlJPUXfGeK2entYQRAsmrAJ9ruOnFbfKF8/WM/F7n1vHvdxlxYACfetiY
+bBnbMiCM4VTx/eEw2UKEIiw=
+=4X2e
+-----END PGP SIGNATURE-----

@@ -1,4 +1,4 @@
-# $Id: DecimalDegrees.pm 28 2005-10-10 03:23:18Z waltman $
+# $Id: DecimalDegrees.pm 43 2006-12-29 04:03:20Z waltman $
 
 package Geo::Coordinates::DecimalDegrees;
 
@@ -9,7 +9,7 @@ require Carp;
 
 @EXPORT = qw( decimal2dms decimal2dm dms2decimal dm2decimal );
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 use strict;
 use warnings;
@@ -17,6 +17,7 @@ use warnings;
 sub decimal2dms {
     my ($decimal) = @_;
 
+    my $sign = $decimal <=> 0;
     my $degrees = int($decimal);
 
     # convert decimal part to minutes
@@ -24,16 +25,17 @@ sub decimal2dms {
     my $minutes = int($dec_min);
     my $seconds = ($dec_min - $minutes) * 60;
 
-    return ($degrees, $minutes, $seconds);
+    return ($degrees, $minutes, $seconds, $sign);
 }
 
 sub decimal2dm {
     my ($decimal) = @_;
 
+    my $sign = $decimal <=> 0;
     my $degrees = int($decimal);
     my $minutes = abs($decimal - $degrees) * 60;
 
-    return ($degrees, $minutes);
+    return ($degrees, $minutes, $sign);
 }
 
 sub dms2decimal {
@@ -64,8 +66,8 @@ Geo::Coordinates::DecimalDegrees - convert between degrees/minutes/seconds and d
 =head1 SYNOPSIS
 
   use Geo::Coordinates::DecimalDegrees;
-  (degrees, $minutes, $seconds) = decimal2dms($decimal_degrees);
-  (degrees, $minutes) = decimal2dm($decimal_degrees);
+  (degrees, $minutes, $seconds, $sign) = decimal2dms($decimal_degrees);
+  (degrees, $minutes, $sign) = decimal2dm($decimal_degrees);
   $decimal_degrees = dms2decimal($degrees, $minutes, $seconds);
   $decimal_degrees = dm2decimal($degrees, $minutes);
 
@@ -99,6 +101,13 @@ list.  Typically used as follows:
 If $decimal_degrees is negative, only $degrees will be negative.
 $minutes and $seconds will always be positive.
 
+If $decimal_degrees is between 0 and -1, $degrees will be returned as
+0. If you need to know the sign in these cases, you can use this
+longer version, where $sign is 1, 0, or -1 depending on whether
+$decimal_degrees is positive, 0, or negative:
+
+  ($degrees, $minutes, $seconds, $sign) = decimal2dms($decimal_degrees);
+
 =item decimal2dm($decimal_degrees)
 
 Converts a floating point number of degrees to the equivalent number
@@ -109,6 +118,13 @@ Typically used as follows:
 
 If $decimal_degrees is negative, only $degrees will be negative.
 $minutes will always be positive.
+
+If $decimal_degrees is between 0 and -1, $degrees will be returned as
+0. If you need to know the sign in these cases, you can use this
+longer version, where $sign is 1, 0, or -1 depending on whether
+$decimal_degrees is positive, 0, or negative:
+
+  ($degrees, $minutes, $sign) = decimal2dm($decimal_degrees);
 
 =item dms2decimal($degrees, $minutes, $seconds)
 
@@ -142,7 +158,7 @@ Walt Mankowski, E<lt>waltman@pobox.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2003 by Walt Mankowski
+Copyright 2003-2006 by Walt Mankowski
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
@@ -153,5 +169,8 @@ Thanks to Andy Lester for telling me about pod.t
 
 Thanks to Paulie Pena IV for pointing out that I could remove a
 division in decimal2dms().
+
+Thanks to Tim Flohrer for reporting the bug in decimal2dms() and
+decimal2dm() when $decimal_degrees is between 0 and -1.
 
 =cut
