@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Geo-Coordinates-DecimalDegrees
-version:             0.06
+version:             0.07
 abstract:            convert between degrees/minutes/seconds and decimal degrees
 license:             ~
 generated_by:        ExtUtils::MakeMaker version 6.31

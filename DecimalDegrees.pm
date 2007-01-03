@@ -1,4 +1,4 @@
-# $Id: DecimalDegrees.pm 43 2006-12-29 04:03:20Z waltman $
+# $Id: DecimalDegrees.pm 49 2007-01-03 03:30:38Z waltman $
 
 package Geo::Coordinates::DecimalDegrees;
 
@@ -9,7 +9,7 @@ require Carp;
 
 @EXPORT = qw( decimal2dms decimal2dm dms2decimal dm2decimal );
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 use strict;
 use warnings;
@@ -158,7 +158,7 @@ Walt Mankowski, E<lt>waltman@pobox.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2003-2006 by Walt Mankowski
+Copyright 2003-2007 by Walt Mankowski
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
