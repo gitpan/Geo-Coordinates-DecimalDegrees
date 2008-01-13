@@ -1,4 +1,4 @@
-# $Id: DecimalDegrees.pm 49 2007-01-03 03:30:38Z waltman $
+# $Id: DecimalDegrees.pm 54 2008-01-13 02:46:54Z waltman $
 
 package Geo::Coordinates::DecimalDegrees;
 
@@ -9,7 +9,7 @@ require Carp;
 
 @EXPORT = qw( decimal2dms decimal2dm dms2decimal dm2decimal );
 
-$VERSION = '0.07';
+$VERSION = '0.08';
 
 use strict;
 use warnings;
