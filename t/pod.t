@@ -1,7 +1,7 @@
 # Copied from Andy Lester (http://use.perl.org/~petdance/journal/12391)
 # This test validates the Pod in this module
 #
-# $Id: pod.t 15 2003-06-18 19:50:08Z waltman $
+# $Id$
 
 use Test::More;
 use File::Spec;

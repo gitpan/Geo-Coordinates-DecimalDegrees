@@ -1,4 +1,4 @@
-# $Id: 1.t 52 2008-01-13 02:27:07Z waltman $
+# $Id$
 
 use strict;
 use Test::More tests => 1;

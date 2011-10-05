@@ -1,4 +1,4 @@
-# $Id: 2.t 53 2008-01-13 02:29:34Z waltman $
+# $Id$
 
 use strict;
 use Test::Number::Delta tests => 57;

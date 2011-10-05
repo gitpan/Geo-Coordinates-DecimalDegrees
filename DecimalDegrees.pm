@@ -1,4 +1,4 @@
-# $Id: DecimalDegrees.pm 54 2008-01-13 02:46:54Z waltman $
+# $Id$
 
 package Geo::Coordinates::DecimalDegrees;
 
@@ -9,7 +9,7 @@ require Carp;
 
 @EXPORT = qw( decimal2dms decimal2dm dms2decimal dm2decimal );
 
-$VERSION = '0.08';
+$VERSION = '0.09';
 
 use strict;
 use warnings;
@@ -66,8 +66,8 @@ Geo::Coordinates::DecimalDegrees - convert between degrees/minutes/seconds and d
 =head1 SYNOPSIS
 
   use Geo::Coordinates::DecimalDegrees;
-  (degrees, $minutes, $seconds, $sign) = decimal2dms($decimal_degrees);
-  (degrees, $minutes, $sign) = decimal2dm($decimal_degrees);
+  ($degrees, $minutes, $seconds, $sign) = decimal2dms($decimal_degrees);
+  ($degrees, $minutes, $sign) = decimal2dm($decimal_degrees);
   $decimal_degrees = dms2decimal($degrees, $minutes, $seconds);
   $decimal_degrees = dm2decimal($degrees, $minutes);
 
@@ -154,11 +154,11 @@ right ahead.
 
 =head1 AUTHOR
 
-Walt Mankowski, E<lt>waltman@pobox.comE<gt>
+Walt Mankowski, E<lt>waltman@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2003-2007 by Walt Mankowski
+Copyright 2003-2011 by Walt Mankowski
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

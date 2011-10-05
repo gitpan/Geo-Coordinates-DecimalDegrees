@@ -1,6 +1,6 @@
 # Copied from the pod for Module::Signature
 #
-# $Id: 0-signature.t 46 2007-01-03 03:27:11Z waltman $
+# $Id$
 
 use strict;
 use Test::More;

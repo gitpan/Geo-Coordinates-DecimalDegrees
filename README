@@ -4,8 +4,8 @@ NAME
 
 SYNOPSIS
       use Geo::Coordinates::DecimalDegrees;
-      (degrees, $minutes, $seconds, $sign) = decimal2dms($decimal_degrees);
-      (degrees, $minutes, $sign) = decimal2dm($decimal_degrees);
+      ($degrees, $minutes, $seconds, $sign) = decimal2dms($decimal_degrees);
+      ($degrees, $minutes, $sign) = decimal2dm($decimal_degrees);
       $decimal_degrees = dms2decimal($degrees, $minutes, $seconds);
       $decimal_degrees = dm2decimal($degrees, $minutes);
 
@@ -81,10 +81,10 @@ CAVEATS
     ahead.
 
 AUTHOR
-    Walt Mankowski, <waltman@pobox.com>
+    Walt Mankowski, <waltman@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright 2003-2007 by Walt Mankowski
+    Copyright 2003-2011 by Walt Mankowski
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
